@@ -70,12 +70,15 @@ const licenseBadge = (data) => {
         return badge;
     } else if (data === 'Apache License 2.0'){
         badge = '![Apache License 2.0](https://img.shields.io/badge/license-Apache%20License%202.0-brightgreen)';
+        console.log(badge);
         return badge;
     } else if (data === 'GNU General Public License v3.0'){
         badge = '![GNU General Public License v3.0](https://img.shields.io/badge/license-GNU%20GPLv3.0-brightgreen)';
+        console.log(badge);
         return badge;
     } else {
         badge = ''
+        console.log(badge);
         return badge;
     }
 };
@@ -89,12 +92,15 @@ const licenseLink = (data) => {
         return link;
     } else if (data === 'Apache License 2.0'){
         link = 'For more information about this license, visit [https://choosealicense.com/licenses/apache-2.0/](https://choosealicense.com/licenses/apache-2.0/).';
+        console.log(link);
         return link;
     } else if (data === 'GNU General Public License v3.0'){
         link = 'For more information about this license, visit [https://choosealicense.com/licenses/gpl-3.0/](https://choosealicense.com/licenses/gpl-3.0/).';
+        console.log(link);
         return link;
     } else {
         link = ''
+        console.log(link);
         return link;
     }
 }
