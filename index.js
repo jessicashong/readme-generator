@@ -57,6 +57,7 @@ const writeREADME = (data) => {
     console.log(data);
     const readmeContent = generateREADME(data);
     
+    //write new file into assets folder titled generatedREADME.md
     fs.writeFile('./assets/generatedREADME.md', readmeContent, (err) => 
     err ? console.log(err) : console.log('Success!'))
 };
