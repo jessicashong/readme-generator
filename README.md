@@ -18,7 +18,7 @@ Visit https://nodejs.org/en/download/ to install the latest version of Node.js a
 Once Node and npm are installed, run `node index.js` in the command line to begin answering prompts. Answer all prompts thoroughly.
 
 ## Visual Presentation
-
+[sampleREADME Walkthrough Video](https://drive.google.com/file/d/1APs5LnHKSHRx7WcCiVdo0yLtHJUm9CdU/view)
 
 ## Tests
 Run `node index.js` in the command line to test application.
