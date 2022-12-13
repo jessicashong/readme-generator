@@ -1,31 +1,28 @@
-# OnlyFlix
+# README Generator
 
 ## Description
-    OnlyFlix is a web application designed to help a user select a top movie from a collection of  genres.
-    
-    ## Table of contents
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [How to Contribute](#how-to-contribute)
-    - [Tests](#tests)
-    - [Questions](#questions)
-    - [License](#license)
-    
-    ## Installation
-    
-    
-    ## Usage
-    Navigate to https://rosalvamartinez.github.io/OnlyFlix/ and select a genre or scroll down to find the genre of your choice. Use the navigation arrows to scroll through the top ten movies of each genre.
-    
-    ## How to Contribute
-    
-    
-    ## Tests
-    
-    
-    ## Questions 
-    If you have futher questions or would like to give any feedback, please email me at example@gmail.com.
-    
-    ## License
-    MIT license    
-    
+This is a command line application that accepts user input to generate a professional README.md file for the user.
+
+## Table of contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Visual Presentation](#visual-presentation)
+- [Tests](#tests)
+- [Links](#links)
+
+## Installation
+Node and npm are needed to run this application. 
+Visit https://nodejs.org/en/download/ to install the latest version of Node.js and npm.
+
+## Usage
+Once Node and npm are installed, run `node index.js` in the command line to begin answering prompts. Answer all prompts thoroughly.
+
+## Visual Presentation
+
+
+## Tests
+Run `node index.js` in the command line to test application.
+
+## Links 
+GitHub Repo: [https://github.com/jessicashong/readme-generator](https://github.com/jessicashong/readme-generator)
+

@@ -2,45 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-//readme skeleton--replace with user input
-const generateREADME = ({ title, description, installation, usage, contributions, tests, license, github, contact }) => 
-`# ${title}
-
-## Description
-${description}
-
-## Table of contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [How to Contribute](#how-to-contribute)
-- [Tests](#tests)
-- [Questions](#questions)
-- [License](#license)
-
-## Installation
-${installation}
-
-## Usage
-${usage}
-
-## How to Contribute
-${contributions}
-
-## Tests
-${tests}
-
-## Questions 
-If you have futher questions or would like to give any feedback, please feel free to contact me through email.
-[GitHub: ](http://www.github.com/${github});
-[Email: ](${contact})
-
-## License
-${license}    
-`;
-
 // array of questions for user input
-inquirer
-    .prompt ([
+const questions = [
     {
         message: 'What is the title of your project?',
         type: 'input',
@@ -52,7 +15,7 @@ inquirer
         name: 'description'
     },
     {
-        message: 'What are the steps required to install this application?',
+        message: 'What is required to install this application?',
         type: 'input',
         name: 'installation'
     },
@@ -74,7 +37,7 @@ inquirer
     {
         message: 'Please choose a license.',
         type: 'list',
-        choices: ['MIT License','Apache License 2.0','Mozilla Public License 2.0','GNU General Public License v3.0', 'BSD 2-Clause "Simplified" License','BSD 3-Clause "New" or "Revised" License','Boost Software License 1.0','Creative Commons Zero v1.0 Universal','Eclipse Public License 2.0','GNU Affero General Public License v3.0','GNU General Public License v2.0','GNU Lesser General Public License v2.1','The Unlicense 2.0'],
+        choices: ['None','MIT License','Apache License 2.0','GNU General Public License v3.0'],
         name: 'license'
     },
     {
@@ -87,22 +50,105 @@ inquirer
         type: 'input',
         name: 'contact'
     }
-])
-//conditional: if nothing was entered for section, omit from readme
-.then((data) => {
-if (data === '') {
+];
 
-}
-const readmeContent = generateREADME(data);
-
-fs.writeFile('README.md', readmeContent, (err) => 
+//then run data through genereateREADME function and write file with user input
+const writeREADME = (data) => {
+    console.log(data);
+    const readmeContent = generateREADME(data);
+    
+    fs.writeFile('./assets/sampleREADME.md', readmeContent, (err) => 
     err ? console.log(err) : console.log('Success!'))
-});
-// TODO: Create a function to initialize app
-function init() {}
+};
+
+//using license input, create license badge 
+const licenseBadge = (data) => {
+    let badge = '';
+    if (data === 'MIT License'){
+        badge = '![MIT License](https://img.shields.io/badge/license-MIT-brightgreen)';
+        console.log(badge);
+        return badge;
+    } else if (data === 'Apache License 2.0'){
+        badge = '![Apache License 2.0](https://img.shields.io/badge/license-Apache%20License%202.0-brightgreen)';
+        return badge;
+    } else if (data === 'GNU General Public License v3.0'){
+        badge = '![GNU General Public License v3.0](https://img.shields.io/badge/license-GNU%20GPLv3.0-brightgreen)';
+        return badge;
+    } else {
+        badge = ''
+        return badge;
+    }
+};
+
+//using license input, create link with license information
+const licenseLink = (data) => {
+    let link = '';
+    if (data === 'MIT License'){
+        link = 'For more information about this license, visit [https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/mit/).';
+        console.log(link);
+        return link;
+    } else if (data === 'Apache License 2.0'){
+        link = 'For more information about this license, visit [https://choosealicense.com/licenses/apache-2.0/](https://choosealicense.com/licenses/apache-2.0/).';
+        return link;
+    } else if (data === 'GNU General Public License v3.0'){
+        link = 'For more information about this license, visit [https://choosealicense.com/licenses/gpl-3.0/](https://choosealicense.com/licenses/gpl-3.0/).';
+        return link;
+    } else {
+        link = ''
+        return link;
+    }
+}
+
+//readme skeleton--replace with user input
+const generateREADME = (data) => 
+`# ${data.title}
+
+## Description
+${data.description}
+
+${licenseBadge(data.license)}
+
+
+## Table of contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [How to Contribute](#how-to-contribute)
+- [Tests](#tests)
+- [Questions](#questions)
+- [License](#license)
+
+## Installation
+${data.installation}
+
+## Usage
+${data.usage}
+
+## How to Contribute
+${data.contributions}
+
+## Tests
+${data.tests}
+
+## Questions 
+If you have futher questions or would like to give any feedback, please feel free to contact me.
+
+GitHub: [http://www.github.com/${data.github}](http://www.github.com/${data.github})
+
+Email: [${data.contact}](${data.contact})
+
+## License
+${data.license} 
+
+${licenseLink(data.license)}
+`;
+
+//function to initialize app
+const init = () => {
+    inquirer.prompt(questions)
+        .then((data) => {
+            writeREADME(data)
+        })
+};
 
 // Function call to initialize app
 init();
-
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
