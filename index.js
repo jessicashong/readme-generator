@@ -57,7 +57,7 @@ const writeREADME = (data) => {
     console.log(data);
     const readmeContent = generateREADME(data);
     
-    fs.writeFile('./assets/sampleREADME.md', readmeContent, (err) => 
+    fs.writeFile('./assets/generatedREADME.md', readmeContent, (err) => 
     err ? console.log(err) : console.log('Success!'))
 };
 
